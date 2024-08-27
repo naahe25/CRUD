@@ -118,3 +118,47 @@ function deleteData(index) {
     localStorage.setItem("peopleList", JSON.stringify(peopleList));
     showDate();
 }
+
+
+// function to update/edit data from local storage
+
+function updateData(index) {
+    // Submit Button Will Hide And Update Button Will Show for updating data in local storage
+    document.getElementById("Submit").style.display = "none";
+    document.getElementById("Update").style.display = "block";
+    
+    var peopleList;
+    if (localStorage.getItem("peopleList") == null) {
+      peopleList = [];
+    } else {
+      peopleList = JSON.parse(localStorage.getItem("peopleList"));
+    }
+
+    
+    document.getElementById("name").value = peopleList[index].name;
+    document.getElementById("age").value = peopleList[index].age;
+    document.getElementById("address").value = peopleList[index].address;
+    document.getElementById("email").value = peopleList[index].email;
+
+    document.querySelector("#Update").onclick = function () {
+        if (validateForm() == true) {
+          peopleList[index].name = document.getElementById("name").value;
+          peopleList[index].age = document.getElementById("age").value;
+          peopleList[index].address = document.getElementById("address").value;
+          peopleList[index].email = document.getElementById("email").value;
+
+          localStorage.setItem("peopleList", JSON.stringify(peopleList));
+
+          showDate();
+
+          document.getElementById("name").value = "";
+          document.getElementById("age").value = "";
+          document.getElementById("address").value = "";
+          document.getElementById("email").value = "";
+
+          // Update Button Will Hide And Submit Button Will Show 
+          document.getElementById("Submit").style.display = "block";
+          document.getElementById("Update").style.display = "none";
+        }
+    }
+}
