@@ -1,0 +1,26 @@
+body {
+    background: #ee9a2bde;
+}
+
+* {
+    color: #fff;
+}
+
+#Update {
+    display: none;
+}
+
+#todoList {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-item button {
+    margin-left: 10px;
+}
